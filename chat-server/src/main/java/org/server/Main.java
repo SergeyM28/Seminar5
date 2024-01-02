@@ -1,7 +1,21 @@
-package org.example;
+package org.server;
+
+import java.io.IOException;
+import java.net.ServerSocket;
+import java.net.UnknownHostException;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+        try {
+            ServerSocket serverSocket = new ServerSocket(1400);
+            Server server = new Server(serverSocket);
+            server.runServer();
+        }
+        catch (UnknownHostException e){
+            e.printStackTrace();
+        }
+        catch (IOException e){
+            e.printStackTrace();
+        }
     }
 }
